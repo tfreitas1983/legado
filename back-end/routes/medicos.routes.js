@@ -10,6 +10,9 @@ module.exports = app => {
     router.get("/:id", medicos.findOne );
 
     //router.get("/busca/:numero", contratos.findContratoPessoaById);
+    router.post("/", medicos.cadastrar)
+    router.post("/cadastrar/", medicos.addUnidade)
+    
   
     app.use('/api/medicos', router);
   };

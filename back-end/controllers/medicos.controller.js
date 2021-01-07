@@ -115,3 +115,28 @@ exports.editar = (req, res) => {
   })    
 }
 
+exports.addUnidade = (req, res) => {
+  const {medicoId, unidadeId} = req.query 
+
+  return Medico.findByPk(medicoId)
+    .then((medico) => {
+      if (!medico) {
+        console.log("Médico não encontrado!");
+        return null;
+      }
+      return Unidade.findByPk(unidadeId).then((unidade) => {
+        if (!unidade) {
+          console.log("Unidade não encontrada!");
+          return null;
+        }
+
+        medico.addUnidade(unidade);
+        console.log(`>> Adicionada a unidade id=${unidade.id} to médico id=${medico.id}`);
+        res.send(medico)
+        //return medico;
+      });
+    })
+    .catch((err) => {
+      console.log(">> Ocorreu um erro ao cadastrar o médico na unidade: ", err);
+    });
+};
