@@ -131,12 +131,61 @@ exports.addUnidade = (req, res) => {
         }
 
         medico.addUnidade(unidade);
-        console.log(`>> Adicionada a unidade id=${unidade.id} to médico id=${medico.id}`);
+        console.log(`>> Adicionada a unidade id=${unidade.id} ao médico id=${medico.id}`);
         res.send(medico)
-        //return medico;
       });
     })
     .catch((err) => {
       console.log(">> Ocorreu um erro ao cadastrar o médico na unidade: ", err);
+    });
+};
+
+exports.addEspecialidade = (req, res) => {
+  const {medicoId, especialidadeId} = req.query 
+
+  return Medico.findByPk(medicoId)
+    .then((medico) => {
+      if (!medico) {
+        console.log("Médico não encontrado!");
+        return null;
+      }
+      return Especialidade.findByPk(especialidadeId).then((especialidade) => {
+        if (!especialidade) {
+          console.log("Especialidade não encontrada!");
+          return null;
+        }
+
+        medico.addEspecialidade(especialidade);
+        console.log(`>> Adicionada a especialidade id=${especialidade.id} ao médico id=${medico.id}`);
+        res.send(medico)
+      });
+    })
+    .catch((err) => {
+      console.log(">> Ocorreu um erro ao cadastrar o médico na especialidade: ", err);
+    });
+};
+
+exports.addHorario = (req, res) => {
+  const {medicoId, horarioId, diaSemana, qnt} = req.query 
+
+  return Medico.findByPk(medicoId)
+    .then((medico) => {
+      if (!medico) {
+        console.log("Médico não encontrado!");
+        return null;
+      }
+      return Horario.findByPk(horarioId).then((horario) => {
+        if (!horario) {
+          console.log("Horário não encontradao!");
+          return null;
+        }
+
+        medico.addHorario(horario, { through: { diaSemana: diaSemana, qnt: qnt } });
+        console.log(`>> Adicionado o horário id=${horario.id} ao médico id=${medico.id}`);
+        res.send(medico)
+      });
+    })
+    .catch((err) => {
+      console.log(">> Ocorreu um erro ao cadastrar o horário para o médico: ", err);
     });
 };

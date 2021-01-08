@@ -1,8 +1,8 @@
 import axios from "axios"
 import http from "../http-common"
 
-const API_URL = "http://apihoramarcada.ddns.net:5099/api/auth/";
-//const API_URL = "http://sysdoctor.ddns.net:5099/api/auth/";
+//const API_URL = "http://apihoramarcada.ddns.net:5099/api/auth/";
+const API_URL = "http://sysdoctor.ddns.net:5099/api/auth/";
 
 class AuthService {
   login(username, password) {

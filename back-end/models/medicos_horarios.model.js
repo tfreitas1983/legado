@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
           },
         diaSemana: Sequelize.NUMBER,
-        qtd: Sequelize.NUMBER,
+        qnt: Sequelize.NUMBER,
         status: Sequelize.NUMBER
     }, { timestamps: false });
   

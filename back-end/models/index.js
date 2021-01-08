@@ -88,9 +88,9 @@ db.medicos.belongsToMany(db.horarios, {
   foreignKey: 'medicoId'});
 
 db.medicos.hasMany(db.medicos_horarios, {as: 'medicos_horarios'})
-db.medicos_horarios.belongsTo(db.medicos , {as: 'medicos'})
+db.medicos_horarios.belongsTo(db.medicos , {as: 'medicos', foreignKey: 'medicoId'})
 db.horarios.hasMany(db.medicos_horarios , {as: 'medicos_horarios'})
-db.medicos_horarios.belongsTo(db.horarios, {as: 'horarios'})
+db.medicos_horarios.belongsTo(db.horarios, {as: 'horarios', foreignKey: 'horarioId'})
 
 
 db.medicos.hasMany(db.medicos_plantaos, { as: "medicos_plantaos" })

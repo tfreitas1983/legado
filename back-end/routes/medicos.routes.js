@@ -11,7 +11,9 @@ module.exports = app => {
 
     //router.get("/busca/:numero", contratos.findContratoPessoaById);
     router.post("/", medicos.cadastrar)
-    router.post("/cadastrar/", medicos.addUnidade)
+    router.post("/unidades/", medicos.addUnidade)
+    router.post("/especialidades/", medicos.addEspecialidade)
+    router.post("/horarios/", medicos.addHorario)
     
   
     app.use('/api/medicos', router);

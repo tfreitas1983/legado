@@ -1,8 +1,8 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://apihoramarcada.ddns.net:5099/api/test/';
-//const API_URL = 'http://sysdoctor.ddns.net:5099/api/test/';
+// const API_URL = 'http://apihoramarcada.ddns.net:5099/api/test/';
+const API_URL = 'http://sysdoctor.ddns.net:5099/api/test/';
 
 class UserService {
   getPublicContent() {
